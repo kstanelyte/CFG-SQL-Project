@@ -6,7 +6,7 @@
 
 **-- Creating 5 tables within a database**
 
-````sql
+```sql
 create database HappyCow;
 use HappyCow;
 
@@ -19,16 +19,16 @@ Users_id INTEGER NOT NULL AUTO_INCREMENT,
     Food_preference varchar(55) not null,
     PRIMARY KEY (Users_id)
 );
-````
-````sql
+```
+```sql
 create table Cuisine (
 ID INT NOT NULL AUTO_INCREMENT,
 Cuisine_name VARCHAR(50) NOT NULL,
  primary key (ID),
 constraint Cuisine_unique UNIQUE (Cuisine_name)
 );
-````sql
-````
+```sql
+```
 create table Restaurants (
 id int NOT NULL auto_increment,
 Restaurant_name varchar (50) not null,
