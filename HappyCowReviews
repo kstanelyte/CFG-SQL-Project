@@ -19,14 +19,16 @@ Users_id INTEGER NOT NULL AUTO_INCREMENT,
     Food_preference varchar(55) not null,
     PRIMARY KEY (Users_id)
 );
-
+````
+````sql
 create table Cuisine (
 ID INT NOT NULL AUTO_INCREMENT,
 Cuisine_name VARCHAR(50) NOT NULL,
  primary key (ID),
 constraint Cuisine_unique UNIQUE (Cuisine_name)
 );
-
+````sql
+````
 create table Restaurants (
 id int NOT NULL auto_increment,
 Restaurant_name varchar (50) not null,
@@ -37,7 +39,8 @@ Number_of_Reviews int(3),
 primary key (id),
 constraint restaurant_unique UNIQUE (Restaurant_name, City)
 );
-
+````
+````sql
 create table Review (
 Review_id int not null auto_increment,
 user_id int not null references Users(Users_id),
@@ -47,13 +50,15 @@ Rating int not null,
 constraint Rating_ck CHECK (Rating IN (1,2,3,4,5)),
 primary key (Review_id)
 );
-
+````
+````sql
 create table Cuisine_Restaurants(
 Cuisine_id int references Cuisine(ID),
 restaurant_id int references Restaurants(id),
 primary key (cuisine_ID, restaurant_id)
 );
-
+````
+````sql
 create table CuisineName_Restaurants
 SELECT restaurant_id, Cuisine_name
 FROM Cuisine_Restaurants
@@ -65,7 +70,6 @@ INNER JOIN Cuisine
 
 **Populating tables**
 ````sql
-
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Virgee', 'Deering', 'Virgee.Deering@gmail.com', 'Nottingham', 'Veg');
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Petr', 'Lando', 'Petr.Lando@gmail.com', 'Mansfield', 'Veg');
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Caryn', 'Benjaminson', 'Caryn.Benjaminson@gmail.com', 'Nottingham', 'Non-Veg');
