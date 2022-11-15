@@ -2,7 +2,10 @@
 
 ## 🐮 Data Exploration: 'Happy Cow' App
 
-### Creating tables within a database:
+### Creating tables within a database
+<details>
+	
+<summary>SQL code:</summary>
 
 ```sql
 create database HappyCow;
@@ -61,8 +64,13 @@ INNER JOIN Cuisine
    order by restaurant_id asc
     ;
 ```
+</details>
 
 ### Populating the tables:
+
+<details>
+	
+<summary>SQL code:</summary>
 
 ````sql
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Virgee', 'Deering', 'Virgee.Deering@gmail.com', 'Nottingham', 'Veg');
@@ -119,6 +127,7 @@ INSERT INTO Cuisine_Restaurants (cuisine_id, restaurant_id) VALUES (1,8);
 INSERT INTO Cuisine_Restaurants (cuisine_id, restaurant_id) VALUES (2,9);
 INSERT INTO Cuisine_Restaurants (cuisine_id, restaurant_id) VALUES (5,10);
 ````
+</details>
 
 ### Data Exploration:
 
