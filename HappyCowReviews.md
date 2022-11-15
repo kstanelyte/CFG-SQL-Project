@@ -3,9 +3,17 @@
 ## 🐮 Data Exploration: 'Happy Cow' App
 
 ### Creating tables within a database
+
 <details>
 	
-<summary>SQL code:</summary>
+<summary>EER Diagram</summary>
+<img width="796" alt="Screenshot 2022-11-15 at 20 03 39" src="https://user-images.githubusercontent.com/111752964/202016829-d159301f-77d2-497d-a8e4-4efa48f2eda6.png">
+	
+</details>
+
+<details>
+	
+<summary>SQL code</summary>
 
 ```sql
 create database HappyCow;
@@ -70,7 +78,7 @@ INNER JOIN Cuisine
 
 <details>
 	
-<summary>SQL code:</summary>
+<summary>SQL code</summary>
 
 App user names were generated using [Random Name Generator](https://www.behindthename.com/random/)
 ````sql
