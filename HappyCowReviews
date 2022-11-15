@@ -5,7 +5,7 @@
 ### 📌 Select and Sort Data
 
 **-- Creating 5 tables within a database**
-````
+
 ```sql
 create database HappyCow;
 use HappyCow;
@@ -19,7 +19,7 @@ Users_id INTEGER NOT NULL AUTO_INCREMENT,
     Food_preference varchar(55) not null,
     PRIMARY KEY (Users_id)
 );
-````
+```
 ```sql
 create table Cuisine (
 ID INT NOT NULL AUTO_INCREMENT,
@@ -50,7 +50,7 @@ Rating int not null,
 constraint Rating_ck CHECK (Rating IN (1,2,3,4,5)),
 primary key (Review_id)
 );
-````
+
 ````sql
 create table Cuisine_Restaurants(
 Cuisine_id int references Cuisine(ID),
@@ -66,7 +66,7 @@ INNER JOIN Cuisine
 	ON Cuisine_Restaurants.cuisine_id=Cuisine.ID
    order by restaurant_id asc
     ;
-````
+
 
 **Populating tables**
 ````sql
