@@ -68,7 +68,7 @@ INNER JOIN Cuisine
     ;
 
 
-**Populating tables**
+** Populating tables
 ````sql
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Virgee', 'Deering', 'Virgee.Deering@gmail.com', 'Nottingham', 'Veg');
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Petr', 'Lando', 'Petr.Lando@gmail.com', 'Mansfield', 'Veg');
