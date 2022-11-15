@@ -4,7 +4,7 @@
 
 ### 📌 Select and Sort Data
 
-**-- Creating 5 tables within a database**
+** Creating 5 tables within a database
 
 ```sql
 create database HappyCow;
