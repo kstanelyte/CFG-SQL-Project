@@ -72,6 +72,7 @@ INNER JOIN Cuisine
 	
 <summary>SQL code:</summary>
 
+App user names were generated using [Random Name Generator](https://www.behindthename.com/random/)
 ````sql
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Virgee', 'Deering', 'Virgee.Deering@gmail.com', 'Nottingham', 'Veg');
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Petr', 'Lando', 'Petr.Lando@gmail.com', 'Mansfield', 'Veg');
@@ -84,6 +85,7 @@ insert into Users (first_name, last_name, email_id, city, Food_preference) value
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Constance', 'Lewis', 'Constance.Lewis@gmail.com', 'Derby', 'Non-Veg');
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Godfrey', 'Garry', 'Godfrey.Garry@gmail.com', 'Derby', 'Veg');
 
+	
 INSERT INTO Cuisine (Cuisine_name) VALUES("British");
 INSERT INTO Cuisine (Cuisine_name) VALUES("American");
 INSERT INTO Cuisine (Cuisine_name) VALUES("American-Mexican");
