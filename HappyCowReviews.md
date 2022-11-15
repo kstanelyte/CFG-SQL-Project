@@ -1,10 +1,8 @@
-# Code First Girls SQL Project: Happy Cow
+# Code First Girls SQL Project
 
-## 🌎 Data Exploration
+## 🐮 Data Exploration: 'Happy Cow' App
 
-### 📌 Select and Sort Data
-
-** Creating 5 tables within a database
+### Creating tables within a database:
 
 ```sql
 create database HappyCow;
@@ -19,16 +17,14 @@ Users_id INTEGER NOT NULL AUTO_INCREMENT,
     Food_preference varchar(55) not null,
     PRIMARY KEY (Users_id)
 );
-```
-```sql
+
 create table Cuisine (
 ID INT NOT NULL AUTO_INCREMENT,
 Cuisine_name VARCHAR(50) NOT NULL,
  primary key (ID),
 constraint Cuisine_unique UNIQUE (Cuisine_name)
 );
-```sql
-```
+
 create table Restaurants (
 id int NOT NULL auto_increment,
 Restaurant_name varchar (50) not null,
@@ -39,8 +35,7 @@ Number_of_Reviews int(3),
 primary key (id),
 constraint restaurant_unique UNIQUE (Restaurant_name, City)
 );
-````
-````sql
+
 create table Review (
 Review_id int not null auto_increment,
 user_id int not null references Users(Users_id),
@@ -51,14 +46,13 @@ constraint Rating_ck CHECK (Rating IN (1,2,3,4,5)),
 primary key (Review_id)
 );
 
-````sql
+
 create table Cuisine_Restaurants(
 Cuisine_id int references Cuisine(ID),
 restaurant_id int references Restaurants(id),
 primary key (cuisine_ID, restaurant_id)
 );
-````
-````sql
+
 create table CuisineName_Restaurants
 SELECT restaurant_id, Cuisine_name
 FROM Cuisine_Restaurants
@@ -66,9 +60,10 @@ INNER JOIN Cuisine
 	ON Cuisine_Restaurants.cuisine_id=Cuisine.ID
    order by restaurant_id asc
     ;
+```
 
+### Populating the tables:
 
-** Populating tables
 ````sql
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Virgee', 'Deering', 'Virgee.Deering@gmail.com', 'Nottingham', 'Veg');
 insert into Users (first_name, last_name, email_id, city, Food_preference) values ('Petr', 'Lando', 'Petr.Lando@gmail.com', 'Mansfield', 'Veg');
@@ -125,11 +120,11 @@ INSERT INTO Cuisine_Restaurants (cuisine_id, restaurant_id) VALUES (2,9);
 INSERT INTO Cuisine_Restaurants (cuisine_id, restaurant_id) VALUES (5,10);
 ````
 
+### Data Exploration:
+
+#### Which restaurants have been reviewed more than once by the users in the data set?
+
 ````sql
--- Joining tables:
-
-**-- Which restaurants have been reviewed more than once by the users in the data set?**
-
 SELECT id, Restaurant_name, count(*) as Times_Reviewed 
 FROM Restaurants
 INNER JOIN Review 
@@ -139,9 +134,8 @@ INNER JOIN Review
   order by id asc
 ;
 ````
-
+#### Which restaurants have British Cuisine?
 ````sql
-**-- Which restaurants have British Cuisine? **
 -- By joining tables:
 
 select Restaurant_name as Restaurant, Cuisine_name as Cuisine
@@ -161,9 +155,8 @@ where id in (
     where Cuisine_name = 'British')
     ;
  ````
-    
- ````sql
- **-- 3 most reviewed vegan restaurants in Nottingham:**
+ #### What are the 3 most reviewed vegan restaurants in Nottingham?
+````sql
  select Restaurant_name as Popular_Vegan_Restaurants_Nottingham, Number_of_Reviews
  from Restaurants
  where Restaurant_Type = 'Vegan' and City = 'Nottingham'
@@ -171,7 +164,7 @@ where id in (
  limit 3;
 ````
 
-**--  What's the price range of the best reviewed vegan restaurant rated by the non-veg customers?**
+#### What's the price range of the best reviewed vegan restaurant rated by the non-veg customers?
 ````sql
 select Restaurant_name as Restaurant,
 	case
@@ -193,10 +186,8 @@ order by Rating desc
 limit 1
 ;
 ````
-
+#### Creating a view of user restaurant ratings for different cuisines:
 ````sql
-**-- A view of user restaurant ratings of different cuisines**
-
 use HappyCow;
 CREATE VIEW User_Reviews
 AS 
@@ -210,33 +201,32 @@ inner join Users
 on Review.user_id=Users.Users_id
 ;
 ````
+#### How are non-locals rating restaurants in Nottingham?
 ````sql
-**-- How are non-locals rating restaurants in Nottingham?**
-
 SELECT email_id, user_reviews.from, Restaurant_name, Restaurant_type, User_Rating FROM HappyCow.user_reviews
 where user_reviews.from != 'Nottingham' and City = 'Nottingham'
 order by User_Rating desc;
+````
 
-**-- What are the two favourite Nottingham veggie restaurant as rated by locals?**
-
+#### What are the two favourite Nottingham veggie restaurant as rated by locals?
+````sql
 SELECT Restaurant_name, user_rating FROM HappyCow.user_reviews
 where user_reviews.From = 'Nottingham' 
 and City = 'Nottingham' 
 and Restaurant_type like '%Veg%an' 
 order by user_rating desc
 limit 2;
+````
 
-**-- Best rated cuisine from the users in the database?**
-
+#### Best rated cuisine from the users in the database?
+````sql
 select Cuisine, round(avg(User_Rating))as Average_Rating FROM HappyCow.user_reviews
 group by Cuisine
 order by Average_Rating desc
 limit 1;
-
 ````
+### Utilising a stored function to determine whether a restaurant is popular:
 
-**Creating a stored procedure to find out whether the restaurant is popular**
---  Is the restaurant popular?
 ````sql
 use HappyCow;
 DELIMITER //
@@ -261,9 +251,8 @@ DELIMITER ;
 
 select Restaurant_name, is_popular(number_of_reviews) as How_Popular from Restaurants;
 ````
-**-- Create Stored Procedure to quickly add any new reviews for the existing users in the DB**
+### Creating a stored procedure to quickly add any new reviews for the existing users within the database:
 ````sql
-
 CREATE PROCEDURE Current_User_Reviews(
 IN review_id int, 
 IN user_id int,
